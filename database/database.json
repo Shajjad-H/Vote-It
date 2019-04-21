@@ -1,0 +1,1051 @@
+{
+    "type": "database",
+    "name": "VoteIt",
+    "objects": [
+        {
+            "type": "table",
+            "database": null,
+            "name": "files",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"files\" (\"id\" integer not null primary key autoincrement, \"created_at\" datetime null, \"updated_at\" datetime null)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "groupe_votes",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"groupe_votes\" (\"id\" integer not null primary key autoincrement, \"vote_id\" integer not null, \"groupe_id\" integer not null, foreign key(\"groupe_id\") references \"groupes\"(\"id\") on delete cascade, foreign key(\"vote_id\") references \"users\"(\"id\") on delete cascade)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "vote_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "groupe_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                }
+            ],
+            "constraints": [
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"groupe_id\") references \"groupes\"(\"id\") on delete cascade"
+                },
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"vote_id\") references \"users\"(\"id\") on delete cascade"
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "groupes",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"groupes\" (\"id\" integer not null primary key autoincrement, \"nom\" varchar not null, \"owner_id\" integer not null, \"created_at\" datetime null, \"updated_at\" datetime null, foreign key(\"owner_id\") references \"users\"(\"id\") on delete cascade)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "nom",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "owner_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                }
+            ],
+            "constraints": [
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"owner_id\") references \"users\"(\"id\") on delete cascade"
+                }
+            ],
+            "rows": [
+                [
+                    2,
+                    "L3 Logique Classique 2019",
+                    1,
+                    "2019-03-12 21:29:18",
+                    "2019-03-12 23:35:24"
+                ],
+                [
+                    3,
+                    "L3 Amala B 2019",
+                    1,
+                    "2019-03-12 22:04:07",
+                    "2019-03-12 23:35:20"
+                ],
+                [
+                    4,
+                    "L3 Lifprojet 2019",
+                    1,
+                    "2019-03-12 23:39:47",
+                    "2019-03-12 23:39:47"
+                ],
+                [
+                    7,
+                    "L3 Lifap6 2019",
+                    1,
+                    "2019-03-13 00:18:05",
+                    "2019-03-13 00:18:05"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "messages",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"messages\" (\"id\" integer not null primary key autoincrement, \"sender\" integer not null, \"reciver\" integer not null, \"text\" text not null, \"created_at\" datetime null, \"updated_at\" datetime null, foreign key(\"sender\") references \"users\"(\"id\") on delete cascade, foreign key(\"reciver\") references \"users\"(\"id\") on delete cascade)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "sender",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "reciver",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "text",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                }
+            ],
+            "constraints": [
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"sender\") references \"users\"(\"id\") on delete cascade"
+                },
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"reciver\") references \"users\"(\"id\") on delete cascade"
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "migrations",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"migrations\" (\"id\" integer not null primary key autoincrement, \"migration\" varchar not null, \"batch\" integer not null)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "migration",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "batch",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "2019_02_19_140554_create_users_table",
+                    1
+                ],
+                [
+                    2,
+                    "2019_02_24_224217_create_roles_table",
+                    1
+                ],
+                [
+                    3,
+                    "2019_03_08_075213_create_user_roles_table",
+                    1
+                ],
+                [
+                    4,
+                    "2019_03_08_080159_create_groupes_table",
+                    1
+                ],
+                [
+                    5,
+                    "2019_03_08_080621_create_votes_table",
+                    1
+                ],
+                [
+                    6,
+                    "2019_03_08_081110_create_tags_table",
+                    1
+                ],
+                [
+                    7,
+                    "2019_03_08_081835_create_groupe_votes_table",
+                    1
+                ],
+                [
+                    8,
+                    "2019_03_08_082112_create_postes_table",
+                    1
+                ],
+                [
+                    9,
+                    "2019_03_08_082809_create_messages_table",
+                    1
+                ],
+                [
+                    10,
+                    "2019_03_08_082847_create_files_table",
+                    1
+                ],
+                [
+                    11,
+                    "2019_03_12_125154_create_user_groupes_table",
+                    2
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "postes",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"postes\" (\"id\" integer not null primary key autoincrement, \"titre\" varchar not null, \"description\" text not null, \"user_id\" integer not null, \"created_at\" datetime null, \"updated_at\" datetime null, foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "titre",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "description",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                }
+            ],
+            "constraints": [
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade"
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "roles",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"roles\" (\"id\" integer not null primary key autoincrement, \"role\" varchar not null)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "role",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "etudiant"
+                ],
+                [
+                    2,
+                    "admin"
+                ],
+                [
+                    3,
+                    "maitre"
+                ],
+                [
+                    4,
+                    "the boos"
+                ],
+                [
+                    5,
+                    "the bigginer"
+                ],
+                [
+                    6,
+                    "the boss"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "tags",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"tags\" (\"id\" integer not null primary key autoincrement, \"vote_id\" integer not null, \"user_id\" integer not null, foreign key(\"vote_id\") references \"votes\"(\"id\") on delete cascade, foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "vote_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                }
+            ],
+            "constraints": [
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"vote_id\") references \"votes\"(\"id\") on delete cascade"
+                },
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade"
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "user_groupes",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"user_groupes\" (\"id\" integer not null primary key autoincrement, \"user_id\" integer not null, \"groupe_id\" integer not null, foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade, foreign key(\"groupe_id\") references \"groupes\"(\"id\") on delete cascade)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "groupe_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                }
+            ],
+            "constraints": [
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade"
+                },
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"groupe_id\") references \"groupes\"(\"id\") on delete cascade"
+                }
+            ],
+            "rows": [
+                [
+                    5,
+                    1,
+                    4
+                ],
+                [
+                    6,
+                    5,
+                    2
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "user_roles",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"user_roles\" (\"id\" integer not null primary key autoincrement, \"user_id\" integer not null, \"role_id\" integer not null, foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade, foreign key(\"role_id\") references \"roles\"(\"id\") on delete cascade)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "role_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                }
+            ],
+            "constraints": [
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade"
+                },
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"role_id\") references \"roles\"(\"id\") on delete cascade"
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    1,
+                    1
+                ],
+                [
+                    2,
+                    2,
+                    1
+                ],
+                [
+                    3,
+                    3,
+                    1
+                ],
+                [
+                    12,
+                    2,
+                    2
+                ],
+                [
+                    14,
+                    1,
+                    2
+                ],
+                [
+                    16,
+                    1,
+                    4
+                ],
+                [
+                    17,
+                    4,
+                    1
+                ],
+                [
+                    18,
+                    5,
+                    1
+                ],
+                [
+                    19,
+                    6,
+                    1
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "users",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"users\" (\"id\" integer not null primary key autoincrement, \"ps_fname\" varchar not null, \"pseudo\" varchar not null, \"email\" varchar not null, \"sex\" tinyint(1) not null, \"filiere\" varchar null, \"confirmed\" tinyint(1) not null default '0', \"created_at\" datetime null, \"updated_at\" datetime null)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "ps_fname",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "pseudo",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "email",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "sex",
+                    "type": "tinyint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "filiere",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "confirmed",
+                    "type": "tinyint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "DEFAULT",
+                            "definition": "default '0'"
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "HOSSAIN SHAJJAD p1609997",
+                    "p1609997",
+                    "shajjad.hossain@etu.univ-lyon1.fr",
+                    "M.",
+                    null,
+                    0,
+                    "2019-03-11 00:34:19",
+                    "2019-03-11 00:34:19"
+                ],
+                [
+                    2,
+                    "MOULAY-LAKHDAR SARAH p1511065",
+                    "p1511065",
+                    "sarah.moulay-lakhdar@etu.univ-lyon1.fr",
+                    "MME",
+                    null,
+                    0,
+                    "2019-03-11 16:41:41",
+                    "2019-03-11 16:41:41"
+                ],
+                [
+                    3,
+                    "KHELILI ADRIAN p1612177",
+                    "p1612177",
+                    "adrian.khelili@etu.univ-lyon1.fr",
+                    "M.",
+                    null,
+                    0,
+                    "2019-03-11 16:42:42",
+                    "2019-03-11 16:42:42"
+                ],
+                [
+                    4,
+                    "YAGHZAR ABDUL-HAAK p1607319",
+                    "p1607319",
+                    "abdul-haak.yaghzar@etu.univ-lyon1.fr",
+                    "M.",
+                    null,
+                    0,
+                    "2019-03-12 19:36:50",
+                    "2019-03-12 19:36:50"
+                ],
+                [
+                    5,
+                    "TIRVAUDEY FLORENT p1508389",
+                    "p1508389",
+                    "florent.tirvaudey@etu.univ-lyon1.fr",
+                    "M.",
+                    null,
+                    0,
+                    "2019-03-13 13:05:02",
+                    "2019-03-13 13:05:02"
+                ],
+                [
+                    6,
+                    "LEANO MARTINET MICHELLE p1612113",
+                    "p1612113",
+                    "michelle.leano-martinet@etu.univ-lyon1.fr",
+                    "MME",
+                    null,
+                    0,
+                    "2019-03-13 13:48:13",
+                    "2019-03-13 13:48:13"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "votes",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE \"votes\" (\"id\" integer not null primary key autoincrement, \"titre\" varchar not null, \"description\" text not null, \"etat\" varchar not null, \"user_id\" integer not null, \"created_at\" datetime null, \"updated_at\" datetime null, foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "primary key autoincrement"
+                        }
+                    ]
+                },
+                {
+                    "name": "titre",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "description",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "etat",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "not null"
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "null"
+                        }
+                    ]
+                }
+            ],
+            "constraints": [
+                {
+                    "type": "FOREIGN KEY",
+                    "definition": "foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade"
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "roles_role_unique",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"roles_role_unique\" on \"roles\" (\"role\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "users_email_index",
+            "unique": false,
+            "ddl": "CREATE INDEX \"users_email_index\" on \"users\" (\"email\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "users_ps_fname_unique",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"users_ps_fname_unique\" on \"users\" (\"ps_fname\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "users_pseudo_unique",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"users_pseudo_unique\" on \"users\" (\"pseudo\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "votes_titre_index",
+            "unique": false,
+            "ddl": "CREATE INDEX \"votes_titre_index\" on \"votes\" (\"titre\")"
+        }
+    ]
+}
