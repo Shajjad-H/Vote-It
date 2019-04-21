@@ -1,5 +1,4 @@
 #   Vote IT
-
 Vote it est une apllication web interne à l'université de lyon. Cette application web permet de crée des votes pour proposer des modifications dans les UE (unité d'enseignement).
 De plus un forum est accesssible aux elèves pour s'entre aider.
 ---
