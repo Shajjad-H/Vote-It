@@ -52,10 +52,10 @@ Route::middleware('App\Http\Middleware\CasMiddleware')->group(function () {
 
         Route::get('index', 'AdminController@index');
 
-        Route::get('admin/', 'AdminController@index');
         
         Route::middleware('App\Http\Middleware\AdminMiddleware')->group(function (){
             
+            Route::get('admin/', 'AdminController@index');
             Route::post('add/{user}/role', 'UserController@addRole');
             Route::delete('{user}/destroy/role/{role}', 'UserController@removeRole');
             
