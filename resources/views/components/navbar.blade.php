@@ -4,7 +4,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-navbar-custom">
     <div class="container">
 
-        <a class="navbar-brand" href="/">Vote It</a>
+        <a class="navbar-brand" href="/" style="font-family: 'Caveat'; font-style: italic;">
+            "Vote It"
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

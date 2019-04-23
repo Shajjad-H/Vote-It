@@ -1,47 +1,41 @@
 
      
-    <div class="w3-light-grey w3-padding-64 w3-margin-bottom w3-center">
-      <h1 class="w3-jumbo">Weekly Ping</h1>
-    </div>
+<div class="w3-light-grey w3-padding-64 w3-margin-bottom text-center">
+  <h1 class="w3-jumbo">"Vote It"</h1>
+</div>
 
-    <div class="w3-row-padding w3-content" style="max-width:1400px">
-    <div class="w3-twothird">
-        <img alt="Notebook" style="width:100%">
-        <h2>Empty Notebook Found</h2>
-        
+<div class="container-fluid">
 
-        <div class="w3-justify">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
+  @component('unconnected.images-description')
+      @slot('left')
+        <img src="/images/screenshots/home.png" class="img-fluid">
+      @endslot
+      @slot('right')
+        "Vote it" est une application qui vous permettera de partager vos idees et de suggerer une amelioration du deroulement au seins de votre universite LYON 1. 
+        Ici vous pourrait avoir votre propre profil en vous connectant grace à vos identifiant ( identique aux identifiants de l'universite )
+      @endslot
+  @endcomponent
 
-        <video width="820" height="440" controls>
-            <source src="/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4" type="video/mp4">
-            <source src="/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.ogg" type="video/ogg">
-          Votre navigateur ne supporte pas la balise vidéo.
-          </video>
-    </div>
+  @component('unconnected.images-description')
+    @slot('left')
+      Pour créer un vote: il suffit de donner un titre, une déscription ainsi que de mentionner un ou plusieurs groupes, avec la possibilité de taguer des personnes.
+    @endslot
+    @slot('right')
+      <img src="/images/screenshots/vote.png" class="img-fluid">
+    @endslot
+  @endcomponent
 
-    
+  @component('unconnected.images-description')
+    @slot('left')
+      <img src="/images/screenshots/ue.png" class="img-fluid">
+    @endslot
+    @slot('right')
+     Pour s'abonner à un groupe il suffit d'entrer le nom de l'UE et cliquer sur le boutton "Abonner".
+     Si vous etes enseignant vous pouvez créer un nouveau groupe en selectionnant des étudiants.
+    @endslot
+  @endcomponent  
 
-    <div class="w3-third">
-        <div class="w3-container ">
-          @include('unconnected.pie')
-        </div>
-        <br>
-        <div class="w3-container w3-light-grey w3-justify">
-        <h2>Very New News!</h2>
-        <p class="w3-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <br>
-        <div class="w3-container w3-light-grey w3-justify">
-        <h2>Very New News!</h2>
-        <p class="w3-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-       
-    </div>
+</div>
 
-    
-    </div>
+
 
